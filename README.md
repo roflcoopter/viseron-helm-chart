@@ -1,3 +1,7 @@
+## Introduction
+
+This is a helm chart for the [viseron](https://viseron.netlify.app) application.
+
 ## Usage
 
 [Helm](https://helm.sh) must be installed to use the charts.  Please refer to
@@ -13,21 +17,21 @@ If you had already added this repo earlier, run `helm repo update` to retrieve
 the latest versions of the package.  You can then run `helm search repo
 viseron -l` to see the different versions of the chart.
 
-To install the viseron chart:
+To install/upgrade the viseron chart:
 
 ```sh
-helm install my-viseron viseron/viseron
+helm -n my-viseron-namespace upgrade --create-namespace --install --values "my-viseron-values.yaml" my-viseron  viseron/viseron
 ```
 
 To uninstall the chart:
 
 ```sh
-helm delete my-viseron
+helm -n my-viseron-namespace delete my-viseron
 ```
 
-## Configurations
+## Configuration
 
-There are key parts in your `values.yaml` file that you will want to define.
+There are key sections in your `my-viseron-values.yaml` file that you will want to define.
 
 For example, if you want to use [VAAPI](https://viseron.netlify.app/docs/documentation/installation#running-viseron), your `values.yaml` will need to define the `dri` mount point.
 
@@ -42,7 +46,23 @@ volumeMounts:
     mountPath: /dev/dri
 ```
 
-Another important one is storage with the `storage` tag. For example, setting `50Mi` for the config storage, and `200Gi` for the recordings:
+If you want to use [Google Edge TPU](https://coral.ai/products/), your `values.yaml` will need to have this instead:
+
+```yaml
+securityContext:
+  privileged: true
+
+volumes:
+  - name: dev-usb
+    hostPath:
+      path: /dev/bus/usb
+
+volumeMounts:
+  - name: dev-usb
+    mountPath: /dev/bus/usb
+```
+
+Another important configuration is the volumes to store the configuration and the recordings. For example, setting `50Mi` for the config storage, and `200Gi` for the recordings:
 
 ```yaml
 storage:
@@ -51,3 +71,5 @@ storage:
   data:
     size: 200Gi
 ```
+
+For more details please visit the [viseron documentation](https://viseron.netlify.app/docs/documentation)

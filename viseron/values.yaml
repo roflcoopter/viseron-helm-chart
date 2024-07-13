@@ -27,14 +27,14 @@ podLabels: {}
 podSecurityContext: {}
   # fsGroup: 2000
 
-securityContext:
-  privileged: true
+securityContext: {}
+  # privileged: true
 
 service:
-  type: NodePort
+  type: ClusterIP
   port: 8888
   targetPort: 8888
-  nodePort: 30888
+  # nodePort: 30888
 
 ingress:
   enabled: false
@@ -54,19 +54,19 @@ ingress:
 
 storage:
   config:
-    className: "openebs-lvmpv"
+    className: ""
     size: 50Mi
   data:
-    className: "openebs-lvmpv"
-    size: 200Gi
+    className: ""
+    size: 20Gi
 
-resources:
-  requests:
-    cpu: 2.5
-    memory: 10Gi
-  limits:
-    cpu: 2.5
-    memory: 10Gi
+resources: {}
+  # requests:
+  #   cpu: 2.5
+  #   memory: 10Gi
+  # limits:
+  #   cpu: 2.5
+  #   memory: 10Gi
 
 livenessProbe:
   httpGet:
@@ -78,15 +78,15 @@ readinessProbe:
     port: 8888
 
 # Additional volumes on the output Deployment definition.
-volumes:
-  - name: dev-dri
-    hostPath:
-      path: /dev/dri
+volumes: []
+ # - name: dev-dri
+ #   hostPath:
+ #     path: /dev/dri
 
 # Additional volumeMounts on the output Deployment definition.
-volumeMounts:
-  - name: dev-dri
-    mountPath: /dev/dri
+volumeMounts: []
+ # - name: dev-dri
+ #   mountPath: /dev/dri
 
 nodeSelector: {}
 

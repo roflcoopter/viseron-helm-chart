@@ -1,0 +1,14 @@
+apiVersion: v1
+entries:
+  viseron:
+  - apiVersion: v2
+    appVersion: 2.3.0
+    created: "2024-07-13T04:45:37.59835974Z"
+    description: A Helm chart for viseron
+    digest: 3c534c15290fdd7ad97d09270a7d30fabb0b80150ecc58dc13fd1a1dc27b9b36
+    name: viseron
+    type: application
+    urls:
+    - https://github.com/carlosrodfern/viseron-helm-chart/releases/download/viseron-0.1.0/viseron-0.1.0.tgz
+    version: 0.1.0
+generated: "2024-07-13T04:45:37.598398733Z"

@@ -4,3 +4,6 @@ description: A Helm chart for viseron
 type: application
 version: 0.1.2
 appVersion: "2.3.1"  # default viseron image tag
+maintainers:
+  - name: carlosrodfern
+  - name: roflcoopter

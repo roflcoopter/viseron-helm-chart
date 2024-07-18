@@ -10,7 +10,7 @@ Helm's [documentation](https://helm.sh/docs) to get started.
 Once Helm has been set up correctly, add the repo as follows:
 
 ```sh
-helm repo add viseron https://carlosrodfern.github.io/viseron-helm-chart
+helm repo add viseron https://roflcoopter.github.io/viseron-helm-chart
 ```
 
 If you had already added this repo earlier, run `helm repo update` to retrieve

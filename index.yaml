@@ -2,6 +2,19 @@ apiVersion: v1
 entries:
   viseron:
   - apiVersion: v2
+    appVersion: 2.3.1
+    created: "2024-07-18T14:50:31.828500885Z"
+    description: A Helm chart for viseron
+    digest: 7d84db05036706b172819ae391e83e614075bbfc8711e833525c9fc94c3dc5c0
+    maintainers:
+    - name: carlosrodfern
+    - name: roflcoopter
+    name: viseron
+    type: application
+    urls:
+    - https://github.com/roflcoopter/viseron-helm-chart/releases/download/viseron-0.1.2/viseron-0.1.2.tgz
+    version: 0.1.2
+  - apiVersion: v2
     appVersion: 2.3.0
     created: "2024-07-13T05:27:56.32015886Z"
     description: A Helm chart for viseron
@@ -21,4 +34,4 @@ entries:
     urls:
     - https://github.com/carlosrodfern/viseron-helm-chart/releases/download/viseron-0.1.0/viseron-0.1.0.tgz
     version: 0.1.0
-generated: "2024-07-13T05:27:56.320178535Z"
+generated: "2024-07-18T14:50:31.828522285Z"

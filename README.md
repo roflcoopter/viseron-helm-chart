@@ -33,9 +33,12 @@ helm -n my-viseron-namespace delete my-viseron
 
 There are key sections in your `values.yaml` file that you will want to define.
 
-For example, if you want to use [VAAPI](https://viseron.netlify.app/docs/documentation/installation#running-viseron), your `values.yaml` will need to define the `dri` mount point.
+For example, if you want to use [VAAPI](https://viseron.netlify.app/docs/documentation/installation#running-viseron), your `values.yaml` will need to define the `dri` mount point and allow viseron to run with privileges to access the DRI device.
 
 ```yaml
+securityContext:
+  privileged: true
+
 volumes:
   - name: dev-dri
     hostPath:

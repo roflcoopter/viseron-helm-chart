@@ -47,23 +47,44 @@ spec:
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
           volumeMounts:
-            - name: viseron-data
-              mountPath: /recordings
+            - name: viseron-segments
+              mountPath: /segments
+            - name: viseron-snapshots
+              mountPath: /snapshots
+            - name: viseron-thumbnails
+              mountPath: /thumbnails
+            - name: viseron-eventclips
+              mountPath: /event_clips
             - name: etc-localtime
               mountPath: /etc/localtime
               readOnly: true
             - name: viseron-config
               mountPath: /config
+            - name: viseron-shm
+              mountPath: /dev/shm              
           {{- with .Values.volumeMounts }}
             {{- toYaml . | nindent 12 }}
           {{- end }}
       volumes:
-        - name: viseron-data
+        - name: viseron-segments
           persistentVolumeClaim:
-            claimName: {{ include "viseron.fullname" . }}-data
+            claimName: {{ include "viseron.fullname" . }}-segments
+        - name: viseron-snapshots
+          persistentVolumeClaim:
+            claimName: {{ include "viseron.fullname" . }}-snapshots
+        - name: viseron-thumbnails
+          persistentVolumeClaim:
+            claimName: {{ include "viseron.fullname" . }}-thumbnails
+        - name: viseron-eventclips
+          persistentVolumeClaim:
+            claimName: {{ include "viseron.fullname" . }}-eventclips
         - name: viseron-config
           persistentVolumeClaim:
             claimName: {{ include "viseron.fullname" . }}-config
+        - name: viseron-shm
+          emptyDir:
+            medium: Memory
+            sizeLimit: {{.Values.shm.size}}
         - name: etc-localtime
           hostPath:
             path: /etc/localtime

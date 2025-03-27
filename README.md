@@ -33,7 +33,23 @@ helm -n my-viseron-namespace delete my-viseron
 
 There are key sections in your `values.yaml` file that you will want to define.
 
-For example, if you want to use [VAAPI](https://viseron.netlify.app/docs/documentation/installation#running-viseron), your `values.yaml` will need to define the `dri` mount point and allow viseron to run with privileges to access the DRI device.
+In order to configure the volumes for the configuration and the data use the following properties:
+
+```yaml
+storage:
+  config: # Where the configuration file, database, etc is stored
+    size: 5Gi
+  segments: # Where the recordings (video segments) are stored
+    size: 10Gi
+  snapshots: # Where the snapshots from object detection, motion detection, etc are stored
+    size: 10Gi
+  thumbnails: # Where the thumbnails for recordings triggered by trigger_event_recording are stored
+    size: 2Gi
+  eventclips: # Where the event clips created by create_event_clip are stored
+    size: 5Gi
+```
+
+If you want to use [VAAPI](https://viseron.netlify.app/docs/documentation/installation#running-viseron), your `values.yaml` will need to define the `dri` mount point and allow viseron to run with privileges to access the DRI device.
 
 ```yaml
 securityContext:
@@ -63,16 +79,6 @@ volumes:
 volumeMounts:
   - name: dev-usb
     mountPath: /dev/bus/usb
-```
-
-Another important configuration is the volumes to store the configuration and the recordings. For example, setting `50Mi` for the config storage, and `200Gi` for the recordings:
-
-```yaml
-storage:
-  config:
-    size: 50Mi
-  data:
-    size: 200Gi
 ```
 
 For more details please visit the [viseron documentation](https://viseron.netlify.app/docs/documentation)

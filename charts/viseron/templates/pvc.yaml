@@ -2,17 +2,62 @@
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
-  name: {{ include "viseron.fullname" . }}-data
+  name: {{ include "viseron.fullname" . }}-segments
   labels:
     {{- include "viseron.labels" . | nindent 4 }}
 spec:
-  storageClassName: {{ .Values.storage.data.className }}
+  storageClassName: {{ .Values.storage.segments.className }}
   accessModes:
     - ReadWriteOnce
   volumeMode: Filesystem
   resources:
     requests:
-      storage: {{ .Values.storage.data.size }}
+      storage: {{ .Values.storage.segments.size }}
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: {{ include "viseron.fullname" . }}-snapshots
+  labels:
+    {{- include "viseron.labels" . | nindent 4 }}
+spec:
+  storageClassName: {{ .Values.storage.snapshots.className }}
+  accessModes:
+    - ReadWriteOnce
+  volumeMode: Filesystem
+  resources:
+    requests:
+      storage: {{ .Values.storage.snapshots.size }}
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: {{ include "viseron.fullname" . }}-thumbnails
+  labels:
+    {{- include "viseron.labels" . | nindent 4 }}
+spec:
+  storageClassName: {{ .Values.storage.thumbnails.className }}
+  accessModes:
+    - ReadWriteOnce
+  volumeMode: Filesystem
+  resources:
+    requests:
+      storage: {{ .Values.storage.thumbnails.size }}
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: {{ include "viseron.fullname" . }}-eventclips
+  labels:
+    {{- include "viseron.labels" . | nindent 4 }}
+spec:
+  storageClassName: {{ .Values.storage.eventclips.className }}
+  accessModes:
+    - ReadWriteOnce
+  volumeMode: Filesystem
+  resources:
+    requests:
+      storage: {{ .Values.storage.eventclips.size }}
 ---
 apiVersion: v1
 kind: PersistentVolumeClaim

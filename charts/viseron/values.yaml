@@ -55,10 +55,22 @@ ingress:
 storage:
   config:
     className: ""
-    size: 50Mi
-  data:
+    size: 5Gi
+  segments:
     className: ""
-    size: 20Gi
+    size: 10Gi
+  snapshots:
+    className: ""
+    size: 10Gi
+  thumbnails:
+    className: ""
+    size: 2Gi
+  eventclips:
+    className: ""
+    size: 5Gi
+
+shm:
+  size: 1Gi
 
 resources: {}
   # requests:

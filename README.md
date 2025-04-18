@@ -40,11 +40,11 @@ storage:
   config: # Where the configuration file, database, etc is stored
     size: 5Gi
   segments: # Where the recordings (video segments) are stored
-    size: 10Gi
+    size: 15Gi
   snapshots: # Where the snapshots from object detection, motion detection, etc are stored
-    size: 10Gi
+    size: 15Gi
   thumbnails: # Where the thumbnails for recordings triggered by trigger_event_recording are stored
-    size: 2Gi
+    size: 5Gi
   eventclips: # Where the event clips created by create_event_clip are stored
     size: 5Gi
 ```

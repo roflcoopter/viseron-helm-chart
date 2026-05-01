@@ -2,8 +2,8 @@ apiVersion: v2
 name: viseron
 description: A Helm chart for viseron
 type: application
-version: 1.0.7
-appVersion: "3.4.1"  # default viseron image tag
+version: 1.0.8
+appVersion: "3.5.2"  # default viseron image tag
 maintainers:
   - name: carlosrodfern
   - name: roflcoopter
